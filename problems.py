@@ -31,3 +31,30 @@ def fiboEvenSum(n):
     return results
 
 fiboEvenSum(1000) # 798
+
+
+# return the largest prime number factor of a number
+def prime_factors(n):
+    prime = 2
+    
+    # Print the number of two's that divide n
+    if n % 2 == 0:
+        prime = 2
+          
+    # prime numbers not divisible by 2 begin at 3 and factors end at the last square root (n ** 1/2) that goes into the number.
+    # counting numbers divisble by 2 is pointless, so the skip will be 2
+    for i in range(3,int(n * (1/2))+1,2):
+          
+        # while n is divisible by numbers in the range, reset n and prime to the index
+        while n % i== 0:
+            n = n / i
+            prime = i
+            
+              
+    # if n is greater than 2 and not even, assign it to prime
+    if (n > 2) & (n % 2 != 0):
+        prime = n
+    
+    return prime
+
+prime_factors(13195) # 29
